@@ -83,7 +83,7 @@
 - Confluence для ведения тест-плана и отчета;
 - Jira для фиксирования баг-репортов.
 
-### Рабочий проект в Postman “Сервис Trello”**
+### Рабочий проект в Postman “Сервис Trello”
 
 <a href="https://docs.google.com/document/d/1es9AqgR5TK6i5BaXIXpCPpEfTrEJ-uCgOIONHgLg92o/edit?usp=sharing">
         Ссылка на проект</a>
@@ -116,7 +116,7 @@
 - Confluence для ведения тест-плана и отчета;
 - Jira для фиксирования баг-репортов.
 
-### Проект SOAP “Яндекс.Спеллер**”**
+### Проект SOAP “Яндекс.Спеллер”
 
     <a href="https://docs.google.com/document/d/1z02wI9cWcbp6p3JVFhrnCLs6iUQg48eBvSRcTUHmTo4/edit?usp=sharing">
         Ссылка на проект</a>
