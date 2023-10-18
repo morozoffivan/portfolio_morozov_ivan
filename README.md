@@ -87,6 +87,7 @@
 - Confluence для ведения тест-плана и отчета;
 - Jira для фиксирования баг-репортов.
 <br>
+
 ### Рабочий проект в Postman “Сервис Trello”
 
 <a href="https://docs.google.com/document/d/1es9AqgR5TK6i5BaXIXpCPpEfTrEJ-uCgOIONHgLg92o/edit?usp=sharing">
