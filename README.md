@@ -135,12 +135,12 @@
 <a href="https://docs.google.com/document/d/1z02wI9cWcbp6p3JVFhrnCLs6iUQg48eBvSRcTUHmTo4/edit?usp=sharing">
         Ссылка на проект</a>
         
-        <br>
+        
         
 <a href="https://drive.google.com/file/d/1bD4y7a2lclqYhrbs-skppRyNV0M0U327/view?usp=sharing">
         SOAP запрос</a>
         
-        <br>
+       
         
 <a href="https://drive.google.com/file/d/1AUgIIxyh3AinKRa_B-eLQBWPMNZqwSwI/view?usp=sharing">
             SOAP ответ</a>
