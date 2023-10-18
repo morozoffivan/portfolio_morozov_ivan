@@ -122,6 +122,7 @@
 - Confluence для ведения тест-плана и отчета;
 - Jira для фиксирования баг-репортов.
 <br>
+
 ### Проект SOAP “Яндекс.Спеллер”
 
     <a href="https://docs.google.com/document/d/1z02wI9cWcbp6p3JVFhrnCLs6iUQg48eBvSRcTUHmTo4/edit?usp=sharing">
@@ -152,7 +153,9 @@
 - Confluence для ведения тест-плана и отчета;
 - Jira для фиксирования баг-репортов.
 <br>
+
 ### **Проект SQL**
+
 <br>
 <a href="https://drive.google.com/drive/folders/1Gle1LHYHKXU44ZQrBNKA4VYOrDl5Nug5?usp=drive_link">
         Ссылка на проект</a>
@@ -169,10 +172,14 @@
 ## Проект “Tindog”
 
 **Проект**: Создание сайта с помощью фреймворка Bootstrap
+
 <br>
+
 <a href="https://github.com/morozoffivan/tindog">
         Ссылка на репозиторий</a>
 <br>
+
+
 ## Проект “Wordpress”
 
 **Проект**: Создание нативного сайта
@@ -180,6 +187,7 @@
 <a href="https://github.com/morozoffivan/new_web_site.git">
         Ссылка на репозиторий</a>
 <br>
+
 ## Проект автоматизация проверки входа существуещего пользователя в приложение “Sitechco”
 **Проект**: Создание автотестов для входа в веб-приложение Sitechco на языке Python с помощью библиотеки Selenium
 <br>
