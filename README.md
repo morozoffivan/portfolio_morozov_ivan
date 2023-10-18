@@ -86,15 +86,19 @@
 - Postman для создания коллекции и автоматизации прогона;
 - Confluence для ведения тест-плана и отчета;
 - Jira для фиксирования баг-репортов.
+  
 <br>
 
 ### Рабочий проект в Postman “Сервис Trello”
 
 <a href="https://docs.google.com/document/d/1es9AqgR5TK6i5BaXIXpCPpEfTrEJ-uCgOIONHgLg92o/edit?usp=sharing">
         Ссылка на проект</a>
+        
 <br>
+
 <a href="https://prod-files-secure.s3.us-west-2.amazonaws.com/3e513ab4-b41f-4d77-a7c7-3bead948464c/b1312845-6ac4-4904-a0ec-fd102dcbb154/16_13_22_3864b3ef1eecd804.00953684trello.postman_collection.json">
         Коллекция JSON для Postman</a>
+        
 <br>
 
 **Проект:** Визуальное пространство, в котором осуществляется основная часть работы. На доске располагаются вертикальные списки — листы, на которых находятся карточки.
@@ -121,13 +125,16 @@
 - Postman для создания коллекции и автоматизации прогона;
 - Confluence для ведения тест-плана и отчета;
 - Jira для фиксирования баг-репортов.
+  
 <br>
 
 ### Проект SOAP “Яндекс.Спеллер”
 
     <a href="https://docs.google.com/document/d/1z02wI9cWcbp6p3JVFhrnCLs6iUQg48eBvSRcTUHmTo4/edit?usp=sharing">
         Ссылка на проект</a>
+        
 <br>
+
 <a href="https://drive.google.com/file/d/1bD4y7a2lclqYhrbs-skppRyNV0M0U327/view?usp=sharing">
         SOAP запрос</a>
         <br>
