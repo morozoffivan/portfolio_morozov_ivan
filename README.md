@@ -33,11 +33,11 @@
   <li>Python</li>
 </ul>
 <h2>Проекты:</h2>
-
+<br>
 ### Проект : тест веб-приложения для учителей от Skyeng
 
 <a href="https://drive.google.com/drive/folders/15DrKzBFMoPhYgSJlx2TvJqnLY3D6fcHB?usp=sharing">Ссылка на проект</a>
-
+<br>
 **Проект:** расписание личного кабинета для учителей Skyeng.
 
 **Описание:** в расписание учителей добавлена новая функциональность — личные события. Преподаватель может использовать личные события для собственных встреч, которые не привязаны к ученикам платформы Skyeng. Для тестирования была составлена необходимая тестовая документация в формате тест-кейсов и чек-листов. По завершении тестирования были оформлены баг-репорты, а на основе результатов создан отчет с использованием метрик и выводом о готовности продукта к релизу.
@@ -56,10 +56,11 @@
 - Qase, Sitechko (Checkvist) для написания тестовой документации;
 - Confluence для ведения тест-плана и отчета;
 - Jira для фиксирования баг-репортов.
-
+<br>
 ### **Проект «Тестирование API»**
 
 <a href="https://drive.google.com/drive/folders/15DrKzBFMoPhYgSJlx2TvJqnLY3D6fcHB?usp=sharing">Ссылка на проект</a>
+<br>
 
 <a href="https://drive.google.com/file/d/1iAMYVhDqkZzu-Pcs_LR-VqSAeiufZs8k/view?usp=drive_link">
         Коллекция JSON для Postman</a>
@@ -82,15 +83,15 @@
 - Postman для создания коллекции и автоматизации прогона;
 - Confluence для ведения тест-плана и отчета;
 - Jira для фиксирования баг-репортов.
-
+<br>
 ### Рабочий проект в Postman “Сервис Trello”
 
 <a href="https://docs.google.com/document/d/1es9AqgR5TK6i5BaXIXpCPpEfTrEJ-uCgOIONHgLg92o/edit?usp=sharing">
         Ссылка на проект</a>
-
+<br>
 <a href="https://prod-files-secure.s3.us-west-2.amazonaws.com/3e513ab4-b41f-4d77-a7c7-3bead948464c/b1312845-6ac4-4904-a0ec-fd102dcbb154/16_13_22_3864b3ef1eecd804.00953684trello.postman_collection.json">
         Коллекция JSON для Postman</a>
-
+<br>
 **Проект:** Визуальное пространство, в котором осуществляется основная часть работы. На доске располагаются вертикальные списки — листы, на которых находятся карточки.
 
 Доски, списки и карточки могут называться как угодно в зависимости от целей и задач.
@@ -115,12 +116,12 @@
 - Postman для создания коллекции и автоматизации прогона;
 - Confluence для ведения тест-плана и отчета;
 - Jira для фиксирования баг-репортов.
-
+<br>
 ### Проект SOAP “Яндекс.Спеллер”
 
     <a href="https://docs.google.com/document/d/1z02wI9cWcbp6p3JVFhrnCLs6iUQg48eBvSRcTUHmTo4/edit?usp=sharing">
         Ссылка на проект</a>
-
+<br>
 <a href="https://drive.google.com/file/d/1bD4y7a2lclqYhrbs-skppRyNV0M0U327/view?usp=sharing">
         SOAP запрос</a>
         <br>
@@ -145,11 +146,12 @@
 - Postman для создания коллекции и автоматизации прогона;
 - Confluence для ведения тест-плана и отчета;
 - Jira для фиксирования баг-репортов.
-
+<br>
 ### **Проект SQL**
-
+<br>
 <a href="https://drive.google.com/drive/folders/1Gle1LHYHKXU44ZQrBNKA4VYOrDl5Nug5?usp=drive_link">
         Ссылка на проект</a>
+<br>
 
 **Проект:** база данных.
 
@@ -162,19 +164,19 @@
 ## Проект “Tindog”
 
 **Проект**: Создание сайта с помощью фреймворка Bootstrap
-
+<br>
 <a href="https://github.com/morozoffivan/tindog">
         Ссылка на репозиторий</a>
-
+<br>
 ## Проект “Wordpress”
 
 **Проект**: Создание нативного сайта
-
+<br>
 <a href="https://github.com/morozoffivan/new_web_site.git">
         Ссылка на репозиторий</a>
-
+<br>
 ## Проект автоматизация проверки входа существуещего пользователя в приложение “Sitechco”
 **Проект**: Создание автотестов для входа в веб-приложение Sitechco на языке Python с помощью библиотеки Selenium
-
+<br>
 <a href="https://github.com/morozoffivan/sitechko_enter">
         Ссылка на репозиторий</a>
