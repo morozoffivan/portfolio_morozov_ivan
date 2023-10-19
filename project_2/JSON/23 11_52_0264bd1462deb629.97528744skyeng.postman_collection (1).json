@@ -1,0 +1,1502 @@
+{
+	"info": {
+		"_postman_id": "246ef689-17e6-4244-8b50-9a3f6106e954",
+		"name": "skyeng",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28152684",
+		"_collection_link": "https://universal-shadow-234812.postman.co/workspace/hw_skyeng~37315d24-fbdb-404d-af72-ab8aa47eab17/collection/28152684-246ef689-17e6-4244-8b50-9a3f6106e954?action=share&creator=28152684&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Basic_request",
+			"item": [
+				{
+					"name": "get_schadule",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "{{gt}}={{my_token}}",
+								"description": "подставить my_token - свой токен. gt - global_token",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "    {\r\n        \"from\": \"2023-07-17T00:00:00+03:00\",\r\n        \"till\": \"2023-07-24T00:00:00+03:00\",\r\n        \"onlyTypes\": []\r\n    }\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/{{version}}/{{schadule}}/events",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"{{version}}",
+								"{{schadule}}",
+								"events"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "add_new_personal_event",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var num_id = \"event_id\"\r",
+									"var value = pm.response.json().data.payload.id\r",
+									"\r",
+									"pm.collectionVariables.set(num_id, value);\r",
+									"\r",
+									"var time = \"start_at\"\r",
+									"var time_value = pm.response.json().data.startAt\r",
+									"\r",
+									"pm.collectionVariables.set(time, time_value);\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "{{gt}}={{my_token}}",
+								"description": "подставить my_token - свой токен. gt - global_token",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"backgroundColor\": \"#cf1961\",\r\n    \"color\": \"#FA4A41\",\r\n    \"description\": \"{{$randomJobDescriptor}}\",\r\n    \"title\": \"{{$randomNoun}}\",\r\n    \"startAt\": \"2023-07-17T05:30:00+03:00\",\r\n    \"endAt\": \"2023-07-17T06:00:00+03:00\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/{{version}}/{{schadule}}/createPersonal",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"{{version}}",
+								"{{schadule}}",
+								"createPersonal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "edit_personal_event",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "{{gt}}={{my_token}}",
+								"description": "подставить my_token - свой токен. gt - global_token",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"backgroundColor\": \"#F4F5F6\",\r\n    \"color\": \"#81888D\",\r\n    \"description\": \"{{$randomCatchPhraseDescriptor}}\",\r\n    \"title\": \"{{$randomCatchPhraseNoun}}\",\r\n    \"startAt\": \"{{start_at}}\",\r\n    \"endAt\": \"2023-07-17T06:00:00+03:00\",\r\n    \"id\": {{event_id}},\r\n    \"oldStartAt\": \"{{start_at}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/{{version}}/{{schadule}}/updatePersonal",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"{{version}}",
+								"{{schadule}}",
+								"updatePersonal"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "delete_personal_event",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "{{gt}}={{my_token}}",
+								"description": "подставить my_token - свой токен. gt - global_token",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"id\": {{event_id}},\r\n    \"startAt\": \"{{start_at}}\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{api}}/{{version}}/{{schadule}}/removePersonal",
+							"host": [
+								"{{api}}"
+							],
+							"path": [
+								"{{version}}",
+								"{{schadule}}",
+								"removePersonal"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Test_cases",
+			"item": [
+				{
+					"name": "позитивные проверки",
+					"item": [
+						{
+							"name": "Создание нового личного события",
+							"item": [
+								{
+									"name": "Создание личного события с коротким текстом в названии в прошлом месяце",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var num_id = \"event_id\"\r",
+													"var value = pm.response.json().data.payload.id\r",
+													"\r",
+													"pm.collectionVariables.set(num_id, value);\r",
+													"\r",
+													"var time = \"start_at\"\r",
+													"var time_value = pm.response.json().data.startAt\r",
+													"\r",
+													"pm.collectionVariables.set(time, time_value);"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Cookie",
+												"value": "{{gt}}={{my_token}}",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"backgroundColor\": \"#1F1D16\",\r\n    \"color\": \"#FA4A41\",\r\n    \"description\": \"{{$randomJobDescriptor}}\",\r\n    \"title\": \"А\",\r\n    \"startAt\": \"2023-06-17T05:30:00+03:00\",\r\n    \"endAt\": \"2023-06-17T06:00:00+03:00\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api}}/{{version}}/{{schadule}}/createPersonal",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"{{schadule}}",
+												"createPersonal"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Создание личного события с длинным текстом (не более 40 символов) в названии, содержащий: буквы, цифры и пробелы",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var num_id = \"event_id\"\r",
+													"var value = pm.response.json().data.payload.id\r",
+													"\r",
+													"pm.collectionVariables.set(num_id, value);\r",
+													"\r",
+													"var time = \"start_at\"\r",
+													"var time_value = pm.response.json().data.startAt\r",
+													"\r",
+													"pm.collectionVariables.set(time, time_value);\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Cookie",
+												"value": "{{gt}}={{my_token}}",
+												"description": "подставить my_token - свой токен. gt - global_token",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"backgroundColor\": \"#1F1D16\",\r\n    \"color\": \"#FA4A41\",\r\n    \"description\": \"{{$randomJobDescriptor}}\",\r\n    \"title\": \"lorem 454 lorem\",\r\n    \"startAt\": \"2023-07-17T05:30:00+03:00\",\r\n    \"endAt\": \"2023-07-17T06:00:00+03:00\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api}}/{{version}}/{{schadule}}/createPersonal",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"{{schadule}}",
+												"createPersonal"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Создание личного события с арабскими, китайскими и корейскими символами в названии разделенными пробелами",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var num_id = \"event_id\"\r",
+													"var value = pm.response.json().data.payload.id\r",
+													"\r",
+													"pm.collectionVariables.set(num_id, value);\r",
+													"\r",
+													"var time = \"start_at\"\r",
+													"var time_value = pm.response.json().data.startAt\r",
+													"\r",
+													"pm.collectionVariables.set(time, time_value);\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Cookie",
+												"value": "{{gt}}={{my_token}}",
+												"description": "подставить my_token - свой токен. gt - global_token",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"backgroundColor\": \"#1F1D16\",\r\n    \"color\": \"#FA4A41\",\r\n    \"description\": \"{{$randomJobDescriptor}}\",\r\n    \"title\": \"測試, كيف, 어떻게\",\r\n    \"startAt\": \"2023-07-17T05:30:00+03:00\",\r\n    \"endAt\": \"2023-07-17T06:00:00+03:00\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api}}/{{version}}/{{schadule}}/createPersonal",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"{{schadule}}",
+												"createPersonal"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Создание личного события с текстом из эмодзи и спецсимволов в названии в прошедшем месяце",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var num_id = \"event_id\"\r",
+													"var value = pm.response.json().data.payload.id\r",
+													"\r",
+													"pm.collectionVariables.set(num_id, value);\r",
+													"\r",
+													"var time = \"start_at\"\r",
+													"var time_value = pm.response.json().data.startAt\r",
+													"\r",
+													"pm.collectionVariables.set(time, time_value);\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Cookie",
+												"value": "{{gt}}={{my_token}}",
+												"description": "подставить my_token - свой токен. gt - global_token",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"backgroundColor\": \"#1F1D16\",\r\n    \"color\": \"#FA4A41\",\r\n    \"description\": \"{{$randomJobDescriptor}}\",\r\n    \"title\": \"😀!@#$%^\",\r\n    \"startAt\": \"2023-06-17T05:30:00+03:00\",\r\n    \"endAt\": \"2023-06-17T06:00:00+03:00\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api}}/{{version}}/{{schadule}}/createPersonal",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"{{schadule}}",
+												"createPersonal"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Создание личного события с коротким текстом в описании и вводом времени в ручную согласно формату ЧЧ:ММ",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var num_id = \"event_id\"\r",
+													"var value = pm.response.json().data.payload.id\r",
+													"\r",
+													"pm.collectionVariables.set(num_id, value);\r",
+													"\r",
+													"var time = \"start_at\"\r",
+													"var time_value = pm.response.json().data.startAt\r",
+													"\r",
+													"pm.collectionVariables.set(time, time_value);\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Cookie",
+												"value": "{{gt}}={{my_token}}",
+												"description": "подставить my_token - свой токен. gt - global_token",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"backgroundColor\": \"#1F1D16\",\r\n    \"color\": \"#FA4A41\",\r\n    \"description\": \"{{$randomJobDescriptor}}\",\r\n    \"title\": \"{{$randomNoun}}\",\r\n    \"startAt\": \"2023-07-17T05:30:00+03:00\",\r\n    \"endAt\": \"2023-07-17T06:00:00+03:00\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api}}/{{version}}/{{schadule}}/createPersonal",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"{{schadule}}",
+												"createPersonal"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Создание личного события с пустым описанием и выбором любого цвета события",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"var num_id = \"event_id\"\r",
+													"var value = pm.response.json().data.payload.id\r",
+													"\r",
+													"pm.collectionVariables.set(num_id, value);\r",
+													"\r",
+													"var time = \"start_at\"\r",
+													"var time_value = pm.response.json().data.startAt\r",
+													"\r",
+													"pm.collectionVariables.set(time, time_value);\r",
+													""
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Cookie",
+												"value": "{{gt}}={{my_token}}",
+												"description": "подставить my_token - свой токен. gt - global_token",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"backgroundColor\": \"#f0e4e8\",\r\n    \"color\": \"#0f0f0f\",\r\n    \"description\": \"\",\r\n    \"title\": \"{{$randomNoun}}\",\r\n    \"startAt\": \"2023-07-17T05:30:00+03:00\",\r\n    \"endAt\": \"2023-07-17T06:00:00+03:00\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api}}/{{version}}/{{schadule}}/createPersonal",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"{{schadule}}",
+												"createPersonal"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Удаление личного события",
+							"item": [
+								{
+									"name": "Удаление личного события нажатием на кнопку \"Удалить\"",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Cookie",
+												"value": "{{gt}}={{my_token}}",
+												"description": "подставить my_token - свой токен. gt - global_token",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"id\": {{event_id}},\r\n    \"startAt\": \"{{start_at}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api}}/{{version}}/{{schadule}}/removePersonal",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"{{schadule}}",
+												"removePersonal"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Редактирование личного события",
+							"item": [
+								{
+									"name": "Редактирование личного события с коротким текстом в названии в прошлом месяце",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Cookie",
+												"value": "{{gt}}={{my_token}}",
+												"description": "подставить my_token - свой токен. gt - global_token",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"backgroundColor\": \"#F4F5F6\",\r\n    \"color\": \"#81888D\",\r\n    \"description\": \"it's edit version\",\r\n    \"title\": \"А\",\r\n    \"startAt\": \"2023-06-17T05:30:00+03:00\",\r\n    \"endAt\": \"2023-06-17T06:00:00+03:00\",\r\n    \"id\": {{event_id}},\r\n    \"oldStartAt\": \"{{start_at}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api}}/{{version}}/{{schadule}}/updatePersonal",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"{{schadule}}",
+												"updatePersonal"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Редактирование личного события с арабскими, китайскими и корейскими символами в названии разделенными пробелами",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Cookie",
+												"value": "{{gt}}={{my_token}}",
+												"description": "подставить my_token - свой токен. gt - global_token",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"backgroundColor\": \"#F4F5F6\",\r\n    \"color\": \"#81888D\",\r\n    \"description\": \"it's edit version\",\r\n    \"title\": \"測試, كيف, 어떻게\",\r\n    \"startAt\": \"{{start_at}}\",\r\n    \"endAt\": \"2023-07-17T06:00:00+03:00\",\r\n    \"id\": {{event_id}},\r\n    \"oldStartAt\": \"{{start_at}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api}}/{{version}}/{{schadule}}/updatePersonal",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"{{schadule}}",
+												"updatePersonal"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Редактирование личного события с текстом из эмодзи и спецсимволов в названии",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Cookie",
+												"value": "{{gt}}={{my_token}}",
+												"description": "подставить my_token - свой токен. gt - global_token",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"backgroundColor\": \"#F4F5F6\",\r\n    \"color\": \"#81888D\",\r\n    \"description\": \"it's edit version\",\r\n    \"title\": \"😀!@#$%^\",\r\n    \"startAt\": \"{{start_at}}\",\r\n    \"endAt\": \"2023-07-17T06:00:00+03:00\",\r\n    \"id\": {{event_id}},\r\n    \"oldStartAt\": \"{{start_at}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api}}/{{version}}/{{schadule}}/updatePersonal",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"{{schadule}}",
+												"updatePersonal"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Редактирование личного события с коротким текстом в описании и вводом времени в ручную согласно формату ЧЧ:ММ",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Cookie",
+												"value": "{{gt}}={{my_token}}",
+												"description": "подставить my_token - свой токен. gt - global_token",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"backgroundColor\": \"#F4F5F6\",\r\n    \"color\": \"#81888D\",\r\n    \"description\": \"it's edit version\",\r\n    \"title\": \"postman editv3\",\r\n    \"startAt\": \"{{start_at}}\",\r\n    \"endAt\": \"2023-07-17T06:30:00+03:00\",\r\n    \"id\": {{event_id}},\r\n    \"oldStartAt\": \"{{start_at}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api}}/{{version}}/{{schadule}}/updatePersonal",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"{{schadule}}",
+												"updatePersonal"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Редактирование личного события с пустым описанием и выбором любого другого цвета события",
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Cookie",
+												"value": "{{gt}}={{my_token}}",
+												"description": "подставить my_token - свой токен. gt - global_token",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "{\r\n    \"backgroundColor\": \"#f50a0a\",\r\n    \"color\": \"#81888D\",\r\n    \"description\": \"\",\r\n    \"title\": \"postman editv3\",\r\n    \"startAt\": \"{{start_at}}\",\r\n    \"endAt\": \"2023-07-17T06:00:00+03:00\",\r\n    \"id\": {{event_id}},\r\n    \"oldStartAt\": \"{{start_at}}\"\r\n}",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api}}/{{version}}/{{schadule}}/updatePersonal",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"{{schadule}}",
+												"updatePersonal"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						},
+						{
+							"name": "Вызов расписания",
+							"item": [
+								{
+									"name": "Вызов расписания за прошлый месяц",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Body matches string\", function () {\r",
+													"    \r",
+													"    pm.expect(pm.response.text()).to.include(\"86672693\");\r",
+													"// после include нужно ставить id созданного события в ручную, так как переменную я хз как сюда вставить, пробовал и через создание новой переменной и через другую функцию, все тчетно(((;\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Cookie",
+												"value": "{{gt}}={{my_token}}",
+												"description": "подставить my_token - свой токен. gt - global_token",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "    {\r\n        \"from\": \"2023-06-17T05:30:00+03:00\",\r\n        \"till\": \"2023-06-17T06:00:00+03:00\",\r\n        \"onlyTypes\": []\r\n    }\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api}}/{{version}}/{{schadule}}/events",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"{{schadule}}",
+												"events"
+											]
+										}
+									},
+									"response": []
+								},
+								{
+									"name": "Вызов расписания",
+									"event": [
+										{
+											"listen": "test",
+											"script": {
+												"exec": [
+													"pm.test(\"Body matches string\", function () {\r",
+													"    pm.expect(pm.response.text()).to.include(\"lorem 454 lorem\")\r",
+													"    // после include нужно ставить id созданного события в ручную, так как переменную я хз как сюда вставить, пробовал и через создание новой переменной и через другую функцию, все тчетно(((;\r",
+													"});"
+												],
+												"type": "text/javascript"
+											}
+										}
+									],
+									"request": {
+										"method": "POST",
+										"header": [
+											{
+												"key": "Cookie",
+												"value": "{{gt}}={{my_token}}",
+												"description": "подставить my_token - свой токен. gt - global_token",
+												"type": "text"
+											}
+										],
+										"body": {
+											"mode": "raw",
+											"raw": "    {\r\n        \"from\": \"2023-07-17T00:00:00+03:00\",\r\n        \"till\": \"2023-07-24T00:00:00+03:00\",\r\n        \"onlyTypes\": []\r\n    }\r\n",
+											"options": {
+												"raw": {
+													"language": "json"
+												}
+											}
+										},
+										"url": {
+											"raw": "{{api}}/{{version}}/{{schadule}}/events",
+											"host": [
+												"{{api}}"
+											],
+											"path": [
+												"{{version}}",
+												"{{schadule}}",
+												"events"
+											]
+										}
+									},
+									"response": []
+								}
+							]
+						}
+					]
+				},
+				{
+					"name": "Негативные проверки",
+					"item": [
+						{
+							"name": "Создание личного события с названием из 41 символа",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var num_id = \"event_id\"\r",
+											"var value = pm.response.json().data.payload.id\r",
+											"\r",
+											"pm.collectionVariables.set(num_id, value);\r",
+											"\r",
+											"var time = \"start_at\"\r",
+											"var time_value = pm.response.json().data.startAt\r",
+											"\r",
+											"pm.collectionVariables.set(time, time_value);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "{{gt}}={{my_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"backgroundColor\": \"#1F1D16\",\r\n    \"color\": \"#FA4A41\",\r\n    \"description\": \"{{$randomJobDescriptor}}\",\r\n    \"title\": \"Lorem ipsum dolor sit amet, consectetuer \",\r\n    \"startAt\": \"2023-07-17T05:30:00+03:00\",\r\n    \"endAt\": \"2023-07-17T06:00:00+03:00\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/{{version}}/{{schadule}}/createPersonal",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"{{version}}",
+										"{{schadule}}",
+										"createPersonal"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Создание события с цветом отличного от представленного спектра цветов в UI",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var num_id = \"event_id\"\r",
+											"var value = pm.response.json().data.payload.id\r",
+											"\r",
+											"pm.collectionVariables.set(num_id, value);\r",
+											"\r",
+											"var time = \"start_at\"\r",
+											"var time_value = pm.response.json().data.startAt\r",
+											"\r",
+											"pm.collectionVariables.set(time, time_value);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "{{gt}}={{my_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"backgroundColor\": \"#07098a\",\r\n    \"color\": \"#FA4A41\",\r\n    \"description\": \"{{$randomJobDescriptor}}\",\r\n    \"title\": \"{{$randomJobDescriptor}}\",\r\n    \"startAt\": \"2023-07-17T05:30:00+03:00\",\r\n    \"endAt\": \"2023-07-17T06:00:00+03:00\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/{{version}}/{{schadule}}/createPersonal",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"{{version}}",
+										"{{schadule}}",
+										"createPersonal"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Отправка пустого тела запроса",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var num_id = \"event_id\"\r",
+											"var value = pm.response.json().data.payload.id\r",
+											"\r",
+											"pm.collectionVariables.set(num_id, value);\r",
+											"\r",
+											"var time = \"start_at\"\r",
+											"var time_value = pm.response.json().data.startAt\r",
+											"\r",
+											"pm.collectionVariables.set(time, time_value);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "{{gt}}={{my_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/{{version}}/{{schadule}}/createPersonal",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"{{version}}",
+										"{{schadule}}",
+										"createPersonal"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Создание личного события без даты и времени начала события",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var num_id = \"event_id\"\r",
+											"var value = pm.response.json().data.payload.id\r",
+											"\r",
+											"pm.collectionVariables.set(num_id, value);\r",
+											"\r",
+											"var time = \"start_at\"\r",
+											"var time_value = pm.response.json().data.startAt\r",
+											"\r",
+											"pm.collectionVariables.set(time, time_value);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "{{gt}}={{my_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"backgroundColor\": \"#1F1D16\",\r\n    \"color\": \"#FA4A41\",\r\n    \"description\": \"{{$randomJobDescriptor}}\",\r\n    \"title\": \"А\",\r\n    \"startAt\": \"\",\r\n    \"endAt\": \"2023-07-17T06:00:00+03:00\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/{{version}}/{{schadule}}/createPersonal",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"{{version}}",
+										"{{schadule}}",
+										"createPersonal"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Создание личного события с указанием несуществующего времени",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var num_id = \"event_id\"\r",
+											"var value = pm.response.json().data.payload.id\r",
+											"\r",
+											"pm.collectionVariables.set(num_id, value);\r",
+											"\r",
+											"var time = \"start_at\"\r",
+											"var time_value = pm.response.json().data.startAt\r",
+											"\r",
+											"pm.collectionVariables.set(time, time_value);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "{{gt}}={{my_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"backgroundColor\": \"#1F1D16\",\r\n    \"color\": \"#FA4A41\",\r\n    \"description\": \"{{$randomJobDescriptor}}\",\r\n    \"title\": \"А\",\r\n    \"startAt\": \"2023-07-17T25:30:00+03:00\",\r\n    \"endAt\": \"2023-07-17T25:00:00+03:00\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/{{version}}/{{schadule}}/createPersonal",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"{{version}}",
+										"{{schadule}}",
+										"createPersonal"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Создание личного события с отрицательным диапазоном времени",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var num_id = \"event_id\"\r",
+											"var value = pm.response.json().data.payload.id\r",
+											"\r",
+											"pm.collectionVariables.set(num_id, value);\r",
+											"\r",
+											"var time = \"start_at\"\r",
+											"var time_value = pm.response.json().data.startAt\r",
+											"\r",
+											"pm.collectionVariables.set(time, time_value);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "{{gt}}={{my_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"backgroundColor\": \"#1F1D16\",\r\n    \"color\": \"#FA4A41\",\r\n    \"description\": \"{{$randomJobDescriptor}}\",\r\n    \"title\": \"А\",\r\n    \"startAt\": \"2023-07-17T05:30:00+03:00\",\r\n    \"endAt\": \"2023-07-17T05:00:00+03:00\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/{{version}}/{{schadule}}/createPersonal",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"{{version}}",
+										"{{schadule}}",
+										"createPersonal"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Создание личного события с несуществующей датой",
+							"event": [
+								{
+									"listen": "test",
+									"script": {
+										"exec": [
+											"var num_id = \"event_id\"\r",
+											"var value = pm.response.json().data.payload.id\r",
+											"\r",
+											"pm.collectionVariables.set(num_id, value);\r",
+											"\r",
+											"var time = \"start_at\"\r",
+											"var time_value = pm.response.json().data.startAt\r",
+											"\r",
+											"pm.collectionVariables.set(time, time_value);"
+										],
+										"type": "text/javascript"
+									}
+								}
+							],
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "{{gt}}={{my_token}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"backgroundColor\": \"#1F1D16\",\r\n    \"color\": \"#FA4A41\",\r\n    \"description\": \"{{$randomJobDescriptor}}\",\r\n    \"title\": \"А\",\r\n    \"startAt\": \"2023-13-17T05:30:00+03:00\",\r\n    \"endAt\": \"2023-13-17T06:00:00+03:00\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/{{version}}/{{schadule}}/createPersonal",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"{{version}}",
+										"{{schadule}}",
+										"createPersonal"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Редактирование личного события с длинным текстом из 41 символа в названии",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "{{gt}}={{my_token}}",
+										"description": "подставить my_token - свой токен. gt - global_token",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"backgroundColor\": \"#F4F5F6\",\r\n    \"color\": \"#81888D\",\r\n    \"description\": \"it's edit version\",\r\n    \"title\": \"Lorem ipsum dolor sit amet, consectetuer \",\r\n    \"startAt\": \"{{start_at}}\",\r\n    \"endAt\": \"2023-07-17T06:00:00+03:00\",\r\n    \"id\": {{event_id}},\r\n    \"oldStartAt\": \"{{start_at}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/{{version}}/{{schadule}}/updatePersonal",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"{{version}}",
+										"{{schadule}}",
+										"updatePersonal"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Редактирование личного события без указания даты",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "{{gt}}={{my_token}}",
+										"description": "подставить my_token - свой токен. gt - global_token",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"backgroundColor\": \"#F4F5F6\",\r\n    \"color\": \"#81888D\",\r\n    \"description\": \"it's edit version\",\r\n    \"title\": \"postman editv3\",\r\n    \"startAt\": \"{{start_at}}\",\r\n    \"endAt\": \"\",\r\n    \"id\": {{event_id}},\r\n    \"oldStartAt\": \"{{start_at}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/{{version}}/{{schadule}}/updatePersonal",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"{{version}}",
+										"{{schadule}}",
+										"updatePersonal"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Редактирование личного события с несуществующей датой",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "{{gt}}={{my_token}}",
+										"description": "подставить my_token - свой токен. gt - global_token",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"backgroundColor\": \"#F4F5F6\",\r\n    \"color\": \"#81888D\",\r\n    \"description\": \"it's edit version\",\r\n    \"title\": \"postman editv3\",\r\n    \"startAt\": \"{{start_at}}\",\r\n    \"endAt\": \"2023-13-17T06:00:00+03:00\",\r\n    \"id\": {{event_id}},\r\n    \"oldStartAt\": \"{{start_at}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/{{version}}/{{schadule}}/updatePersonal",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"{{version}}",
+										"{{schadule}}",
+										"updatePersonal"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Редактирование личного события с указанием времени более 24 часов",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "{{gt}}={{my_token}}",
+										"description": "подставить my_token - свой токен. gt - global_token",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"backgroundColor\": \"#F4F5F6\",\r\n    \"color\": \"#81888D\",\r\n    \"description\": \"it's edit version\",\r\n    \"title\": \"postman editv3\",\r\n    \"startAt\": \"{{start_at}}\",\r\n    \"endAt\": \"2023-07-17T25:00:00+03:00\",\r\n    \"id\": {{event_id}},\r\n    \"oldStartAt\": \"{{start_at}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/{{version}}/{{schadule}}/updatePersonal",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"{{version}}",
+										"{{schadule}}",
+										"updatePersonal"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Удаление личного события более одного раза",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "{{gt}}={{my_token}}",
+										"description": "подставить my_token - свой токен. gt - global_token",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n    \"id\": {{event_id}},\r\n    \"startAt\": \"{{start_at}}\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/{{version}}/{{schadule}}/removePersonal",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"{{version}}",
+										"{{schadule}}",
+										"removePersonal"
+									]
+								}
+							},
+							"response": []
+						},
+						{
+							"name": "Удаление личного события с пустым телом запроса",
+							"request": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Cookie",
+										"value": "{{gt}}={{my_token}}",
+										"description": "подставить my_token - свой токен. gt - global_token",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": {
+									"raw": "{{api}}/{{version}}/{{schadule}}/removePersonal",
+									"host": [
+										"{{api}}"
+									],
+									"path": [
+										"{{version}}",
+										"{{schadule}}",
+										"removePersonal"
+									]
+								}
+							},
+							"response": []
+						}
+					]
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "api",
+			"value": "https://api-teachers.skyeng.ru"
+		},
+		{
+			"key": "version",
+			"value": "v2"
+		},
+		{
+			"key": "schadule",
+			"value": "schedule"
+		},
+		{
+			"key": "my_token",
+			"value": "eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiJ9.eyJ1c2VySWQiOjE0NzIwMDY5LCJpZGVudGl0eSI6InRlc3QudHN0MzIwQHNreWVuZy5ydSIsImlkZW50aXR5TG9naW4iOm51bGwsImlkZW50aXR5RW1haWwiOiJ0ZXN0LnRzdDMyMEBza3llbmcucnUiLCJpZGVudGl0eVBob25lIjoiKzc5ODU0NTg2NTY4IiwibmFtZSI6InRlc3QiLCJzdXJuYW1lIjpudWxsLCJlbWFpbCI6InRlc3QudHN0MzIwQHNreWVuZy5ydSIsInVpTGFuZ3VhZ2UiOiJydSIsImxvY2FsZSI6InJ1Iiwic2VydmljZUxvY2FsZSI6bnVsbCwidWFzIjozMCwiand0VHlwZSI6MSwianRpIjoiY3h5ZzhQd2lRbE1idmpVN2pMQnZ3WHdGZk9LTXlJd1MiLCJicmFuZCI6bnVsbCwiZXhwIjoxNjg5ODY0MzE1LCJhSXNTdHJvbmciOnRydWUsImFUeXBlIjoiVVNFUk5BTUVfUEFTU1dPUkQiLCJhVGltZSI6MTY4OTc3NzkxMywicm9sZXMiOlsiUk9MRV9URUFDSEVSX0NBTkRJREFURSIsIlJPTEVfVEVBQ0hFUl9DQU5ESURBVEVfQkFTRV9BQ0NFU1MiLCJST0xFX1RUQ19VU0FHRSIsIlJPTEVfVklNQk9YX1RFQUNIRVJfVVNBR0UiLCJST0xFX1RFQUNIRVIiLCJST0xFX0NSTTJfVEVBQ0hFUl9BQ0NFU1MiLCJST0xFX01BVEhfVEVBQ0hFUiIsIlJPTEVfTUFUSF9DT05URU5UX1RIRU1FX1ZJRVciXX0.TlvhbfusPdVQpNimr-S5Rxil4kPKGQLEfRW155Vv92nzc903dA0XsCXRIMMKjnfaVdiqteuWDE0RVKAOYzC6dR2aUwLqnTWNSUoYS6g7Uu7qcNvHZHzIBB77zARU0wSBOE6-yF7DzjMJLgCz05oqtINBl0N4nNn8xsCUUKn_J-L49grB6uqPxVQ_ViR8nlubcW4cGgVaL93v6LIkcD6ce0Vzcgrk6rxNF_eBUd0LSef_Ol8AMO-IOkJ9VD__XKpz0e7EKxc3NHzwSXPt6HENvEdkR9uHGd6ba-nFiCOTrmxmFGato-IcnNOM0JLzCvQ2imixbwi13GNTDHCmQyzVGDtyz6BlFrnUINo8-P5t8P-SfAYEl_V5RyXIE5uM1eMK6eAGdnqXiih0To1dImAOzpq80Ra3p1mzm2XwGOXCdE9ZwXD9ph9gCjVMJgatvOlRMrTZbUpobYuSibw0VGkbuJn1uXcQyzi-7WjrtqQXVJitkLFexbh6fx_GCKtCfpAAQg8pbAefwM6JPRibZN9XYgYIfAJ4zm85W4LW6Z1WHoZuF7cMJin3D1mD6HqxoZtRPQuEEOn7G4fzjxGI9qSDjXVSOiwl356NadIML9lP4YmoZhQ0tnoT3kPj_D9DLZscZhmrN5DXvZIG49RSTJpM3L7ia9KyIU2Hkq6pLh4r6DY",
+			"type": "string"
+		},
+		{
+			"key": "gt",
+			"value": "token_global"
+		},
+		{
+			"key": "event_id",
+			"value": ""
+		},
+		{
+			"key": "start_at",
+			"value": ""
+		}
+	]
+}
