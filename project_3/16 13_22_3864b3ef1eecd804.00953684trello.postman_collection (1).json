@@ -1,0 +1,1278 @@
+{
+	"info": {
+		"_postman_id": "1cf25002-9f94-4f40-b436-5dea7ee293f7",
+		"name": "trello",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "28152684",
+		"_collection_link": "https://universal-shadow-234812.postman.co/workspace/HW5~f437dcf8-3ef5-44b2-b79a-28d90a58c6a5/collection/28152684-1cf25002-9f94-4f40-b436-5dea7ee293f7?action=share&creator=28152684&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Board",
+			"item": [
+				{
+					"name": "Create a Board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var key = \"justId\"\r",
+									"var value = pm.response.json().id\r",
+									"\r",
+									"pm.collectionVariables.set(key, value);\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"\r",
+									""
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token={{myToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}boards/?name={{$randomCompanyName}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}boards",
+								""
+							],
+							"query": [
+								{
+									"key": "defaultLabels",
+									"value": "{{defaultLabels}}",
+									"description": "Determines whether to use the default set of labels.",
+									"disabled": true
+								},
+								{
+									"key": "defaultLists",
+									"value": "{{defaultLists}}",
+									"description": "Determines whether to add the default set of lists to a board (To Do, Doing, Done). It is ignored if `idBoardSource` is provided.",
+									"disabled": true
+								},
+								{
+									"key": "desc",
+									"value": "{{desc}}",
+									"description": "A new description for the board, 0 to 16384 characters long",
+									"disabled": true
+								},
+								{
+									"key": "idOrganization",
+									"value": "{{idOrganization}}",
+									"description": "The id or name of the Workspace the board should belong to.",
+									"disabled": true
+								},
+								{
+									"key": "idBoardSource",
+									"value": "{{idBoardSource}}",
+									"description": "The id of a board to copy into the new board.",
+									"disabled": true
+								},
+								{
+									"key": "keepFromSource",
+									"value": "{{keepFromSource}}",
+									"description": "To keep cards from the original board pass in the value `cards`",
+									"disabled": true
+								},
+								{
+									"key": "powerUps",
+									"value": "{{powerUps}}",
+									"description": "The Power-Ups that should be enabled on the new board. One of: `all`, `calendar`, `cardAging`, `recap`, `voting`.",
+									"disabled": true
+								},
+								{
+									"key": "prefs_permissionLevel",
+									"value": "{{prefs_permissionLevel}}",
+									"description": "The permissions level of the board. One of: `org`, `private`, `public`.",
+									"disabled": true
+								},
+								{
+									"key": "prefs_voting",
+									"value": "{{prefs_voting}}",
+									"description": "Who can vote on this board. One of `disabled`, `members`, `observers`, `org`, `public`.",
+									"disabled": true
+								},
+								{
+									"key": "prefs_comments",
+									"value": "{{prefs_comments}}",
+									"description": "Who can comment on cards on this board. One of: `disabled`, `members`, `observers`, `org`, `public`.",
+									"disabled": true
+								},
+								{
+									"key": "prefs_invitations",
+									"value": "{{prefs_invitations}}",
+									"description": "Determines what types of members can invite users to join. One of: `admins`, `members`.",
+									"disabled": true
+								},
+								{
+									"key": "prefs_selfJoin",
+									"value": "{{prefs_selfJoin}}",
+									"description": "Determines whether users can join the boards themselves or whether they have to be invited.",
+									"disabled": true
+								},
+								{
+									"key": "prefs_cardCovers",
+									"value": "{{prefs_cardCovers}}",
+									"description": "Determines whether card covers are enabled.",
+									"disabled": true
+								},
+								{
+									"key": "prefs_background",
+									"value": "{{prefs_background}}",
+									"description": "The id of a custom background or one of: `blue`, `orange`, `green`, `red`, `purple`, `pink`, `lime`, `sky`, `grey`.",
+									"disabled": true
+								},
+								{
+									"key": "prefs_cardAging",
+									"value": "{{prefs_cardAging}}",
+									"description": "Determines the type of card aging that should take place on the board if card aging is enabled. One of: `pirate`, `regular`.",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "{{$randomCompanyName}}"
+								}
+							]
+						},
+						"description": "Create a new board."
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "key",
+									"value": "token",
+									"type": "string"
+								},
+								{
+									"key": "type",
+									"value": "string",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token={{myToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}boards/{{justId}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}boards",
+								"{{justId}}"
+							],
+							"query": [
+								{
+									"key": "actions",
+									"value": "{{actions}}",
+									"description": "This is a nested resource. Read more about actions as nested resources [here](/cloud/trello/guides/rest-api/nested-resources/).",
+									"disabled": true
+								},
+								{
+									"key": "boardStars",
+									"value": "{{boardStars}}",
+									"description": "Valid values are one of: `mine` or `none`.",
+									"disabled": true
+								},
+								{
+									"key": "cards",
+									"value": "{{cards}}",
+									"description": "This is a nested resource. Read more about cards as nested resources [here](/cloud/trello/guides/rest-api/nested-resources/).",
+									"disabled": true
+								},
+								{
+									"key": "card_pluginData",
+									"value": "{{card_pluginData}}",
+									"description": "Use with the `cards` param to include card pluginData with the response",
+									"disabled": true
+								},
+								{
+									"key": "checklists",
+									"value": "{{checklists}}",
+									"description": "This is a nested resource. Read more about checklists as nested resources [here](/cloud/trello/guides/rest-api/nested-resources/).",
+									"disabled": true
+								},
+								{
+									"key": "customFields",
+									"value": "{{customFields}}",
+									"description": "This is a nested resource. Read more about custom fields as nested resources [here](#custom-fields-nested-resource).",
+									"disabled": true
+								},
+								{
+									"key": "fields",
+									"value": "{{fields}}",
+									"description": "The fields of the board to be included in the response. Valid values: all or a comma-separated list of: closed, dateLastActivity, dateLastView, desc, descData, idMemberCreator, idOrganization, invitations, invited, labelNames, memberships, name, pinned, powerUps, prefs, shortLink, shortUrl, starred, subscribed, url",
+									"disabled": true
+								},
+								{
+									"key": "labels",
+									"value": "{{labels}}",
+									"description": "This is a nested resource. Read more about labels as nested resources [here](/cloud/trello/guides/rest-api/nested-resources/).",
+									"disabled": true
+								},
+								{
+									"key": "lists",
+									"value": "{{lists}}",
+									"description": "This is a nested resource. Read more about lists as nested resources [here](/cloud/trello/guides/rest-api/nested-resources/).",
+									"disabled": true
+								},
+								{
+									"key": "members",
+									"value": "{{members}}",
+									"description": "This is a nested resource. Read more about members as nested resources [here](/cloud/trello/guides/rest-api/nested-resources/).",
+									"disabled": true
+								},
+								{
+									"key": "memberships",
+									"value": "{{memberships}}",
+									"description": "This is a nested resource. Read more about memberships as nested resources [here](/cloud/trello/guides/rest-api/nested-resources/).",
+									"disabled": true
+								},
+								{
+									"key": "pluginData",
+									"value": "{{pluginData}}",
+									"description": "Determines whether the pluginData for this board should be returned. Valid values: true or false.",
+									"disabled": true
+								},
+								{
+									"key": "organization",
+									"value": "{{organization}}",
+									"description": "This is a nested resource. Read more about organizations as nested resources [here](/cloud/trello/guides/rest-api/nested-resources/).",
+									"disabled": true
+								},
+								{
+									"key": "organization_pluginData",
+									"value": "{{organization_pluginData}}",
+									"description": "Use with the `organization` param to include organization pluginData with the response",
+									"disabled": true
+								},
+								{
+									"key": "myPrefs",
+									"value": "{{myPrefs}}",
+									"disabled": true
+								},
+								{
+									"key": "tags",
+									"value": "{{tags}}",
+									"description": "Also known as collections, tags, refer to the collection(s) that a Board belongs to.",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Request a single board."
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "key",
+									"value": "token",
+									"type": "string"
+								},
+								{
+									"key": "type",
+									"value": "string",
+									"type": "string"
+								}
+							]
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token={{myToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}boards/{{justId}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}boards",
+								"{{justId}}"
+							]
+						},
+						"description": "Delete a board."
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "List",
+			"item": [
+				{
+					"name": "Create a List on a Board",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var idFromList = \"idList\"\r",
+									"var valueList = pm.response.json().id\r",
+									"\r",
+									"pm.collectionVariables.set(idFromList, valueList);\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token={{myToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}boards/{{justId}}/lists?name={{$randomCity}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}boards",
+								"{{justId}}",
+								"lists"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{{$randomCity}}",
+									"description": "The name of the list to be created. 1 to 16384 characters long."
+								},
+								{
+									"key": "pos",
+									"value": "{{pos}}",
+									"description": "Determines the position of the list. Valid values: `top`, `bottom`, or a positive number.",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Create a new List on a Board."
+					},
+					"response": []
+				},
+				{
+					"name": "Get a List",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token={{myToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}lists/{{idList}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}lists",
+								"{{idList}}"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "{{fields}}",
+									"description": "`all` or a comma separated list of List field names.",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Get information about a List"
+					},
+					"response": []
+				},
+				{
+					"name": "Archive or unarchive a list",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token={{myToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}lists/:id/closed?value=true",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}lists",
+								":id",
+								"closed"
+							],
+							"query": [
+								{
+									"key": "value",
+									"value": "true",
+									"description": "Set to true to close (archive) the list"
+								}
+							],
+							"variable": [
+								{
+									"key": "id",
+									"value": "{{idList}}",
+									"description": "The ID of the list"
+								}
+							]
+						},
+						"description": "Archive or unarchive a list"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Cards",
+			"item": [
+				{
+					"name": "Create a new Card",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var keyCard = \"idCard\"\r",
+									"var valueCard = pm.response.json().id\r",
+									"pm.collectionVariables.set(keyCard, valueCard)\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token={{myToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}cards?name={{$randomAdjective}}&idList={{idList}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}cards"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{{$randomAdjective}}",
+									"description": "The name for the card"
+								},
+								{
+									"key": "desc",
+									"value": "{{desc}}",
+									"description": "The description for the card",
+									"disabled": true
+								},
+								{
+									"key": "pos",
+									"value": "{{pos}}",
+									"description": "The position of the new card. `top`, `bottom`, or a positive float",
+									"disabled": true
+								},
+								{
+									"key": "due",
+									"value": "{{due}}",
+									"description": "A due date for the card",
+									"disabled": true
+								},
+								{
+									"key": "start",
+									"value": "{{start}}",
+									"description": "The start date of a card, or `null`",
+									"disabled": true
+								},
+								{
+									"key": "dueComplete",
+									"value": "{{dueComplete}}",
+									"disabled": true
+								},
+								{
+									"key": "idList",
+									"value": "{{idList}}",
+									"description": "The ID of the list the card should be created in"
+								},
+								{
+									"key": "idMembers",
+									"value": "{{idMembers}}",
+									"description": "Comma-separated list of member IDs to add to the card",
+									"disabled": true
+								},
+								{
+									"key": "idLabels",
+									"value": "{{idLabels}}",
+									"description": "Comma-separated list of label IDs to add to the card",
+									"disabled": true
+								},
+								{
+									"key": "urlSource",
+									"value": "{{urlSource}}",
+									"description": "A URL starting with `http://` or `https://`",
+									"disabled": true
+								},
+								{
+									"key": "fileSource",
+									"value": "{{fileSource}}",
+									"disabled": true
+								},
+								{
+									"key": "mimeType",
+									"value": "{{mimeType}}",
+									"description": "The mimeType of the attachment. Max length 256",
+									"disabled": true
+								},
+								{
+									"key": "idCardSource",
+									"value": "{{idCardSource}}",
+									"description": "The ID of a card to copy into the new card",
+									"disabled": true
+								},
+								{
+									"key": "keepFromSource",
+									"value": "{{keepFromSource}}",
+									"description": "If using `idCardSource` you can specify which properties to copy over. `all` or comma-separated list of: `attachments,checklists,customFields,comments,due,start,labels,members,start,stickers`",
+									"disabled": true
+								},
+								{
+									"key": "address",
+									"value": "{{address}}",
+									"description": "For use with/by the Map View",
+									"disabled": true
+								},
+								{
+									"key": "locationName",
+									"value": "{{locationName}}",
+									"description": "For use with/by the Map View",
+									"disabled": true
+								},
+								{
+									"key": "coordinates",
+									"value": "{{coordinates}}",
+									"description": "For use with/by the Map View. Should take the form latitude,longitude",
+									"disabled": true
+								},
+								{
+									"key": "",
+									"value": "",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Create a new card"
+					},
+					"response": []
+				},
+				{
+					"name": "change list",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token={{myToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}cards/{{idCard}}?idList={{idList}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}cards",
+								"{{idCard}}"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{{$randomAdjective}}",
+									"description": "The new name for the card",
+									"disabled": true
+								},
+								{
+									"key": "desc",
+									"value": "{{desc}}",
+									"description": "The new description for the card",
+									"disabled": true
+								},
+								{
+									"key": "closed",
+									"value": "{{closed}}",
+									"description": "Whether the card should be archived (closed: true)",
+									"disabled": true
+								},
+								{
+									"key": "idMembers",
+									"value": "{{idMembers}}",
+									"description": "Comma-separated list of member IDs",
+									"disabled": true
+								},
+								{
+									"key": "idAttachmentCover",
+									"value": "{{idAttachmentCover}}",
+									"description": "The ID of the image attachment the card should use as its cover, or null for none",
+									"disabled": true
+								},
+								{
+									"key": "idList",
+									"value": "{{idList}}",
+									"description": "The ID of the list the card should be in"
+								},
+								{
+									"key": "idLabels",
+									"value": "{{idLabels}}",
+									"description": "Comma-separated list of label IDs",
+									"disabled": true
+								},
+								{
+									"key": "idBoard",
+									"value": "{{idBoard}}",
+									"description": "The ID of the board the card should be on",
+									"disabled": true
+								},
+								{
+									"key": "pos",
+									"value": "{{pos}}",
+									"description": "The position of the card in its list. `top`, `bottom`, or a positive float",
+									"disabled": true
+								},
+								{
+									"key": "due",
+									"value": "{{due}}",
+									"description": "When the card is due, or `null`",
+									"disabled": true
+								},
+								{
+									"key": "start",
+									"value": "{{start}}",
+									"description": "The start date of a card, or `null`",
+									"disabled": true
+								},
+								{
+									"key": "dueComplete",
+									"value": "{{dueComplete}}",
+									"description": "Whether the due date should be marked complete",
+									"disabled": true
+								},
+								{
+									"key": "subscribed",
+									"value": "{{subscribed}}",
+									"description": "Whether the member is should be subscribed to the card",
+									"disabled": true
+								},
+								{
+									"key": "address",
+									"value": "{{address}}",
+									"description": "For use with/by the Map View",
+									"disabled": true
+								},
+								{
+									"key": "locationName",
+									"value": "{{locationName}}",
+									"description": "For use with/by the Map View",
+									"disabled": true
+								},
+								{
+									"key": "coordinates",
+									"value": "{{coordinates}}",
+									"description": "For use with/by the Map View. Should be latitude,longitude",
+									"disabled": true
+								},
+								{
+									"key": "cover",
+									"value": "{{cover}}",
+									"description": "Updates the card's cover\n | Option | Values | About |\n |--------|--------|-------|\n | color | `pink`, `yellow`, `lime`, `blue`, `black`, `orange`, `red`, `purple`, `sky`, `green` | Makes the cover a solid color . |\n | brightness | `dark`, `light` | Determines whether the text on the cover should be dark or light.\n | url | An unsplash URL: https://images.unsplash.com | Used if making an image the cover. Only Unsplash URLs work.\n | idAttachment | ID of an attachment on the card | Used if setting an attached image as the cover. |\n | size | `normal`, `full` | Determines whether to show the card name on the cover, or below it. |\n \n `brightness` can be sent alongside any of the other parameters, but all of the other parameters are mutually exclusive; you can not have the cover be a `color` and an `idAttachment` at the same time. \n \n On the brightness options, setting it to light will make the text on the card cover dark:\n ![](/cloud/trello/images/rest/cards/cover-brightness-dark.png)\n \n And vice versa, setting it to dark will make the text on the card cover light: \n ![](/cloud/trello/images/rest/cards/cover-brightness-light.png) ",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Update a card"
+					},
+					"response": []
+				},
+				{
+					"name": "change name of card",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token={{myToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}cards/{{idCard}}?name={{$randomAdjective}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}cards",
+								"{{idCard}}"
+							],
+							"query": [
+								{
+									"key": "name",
+									"value": "{{$randomAdjective}}",
+									"description": "The new name for the card"
+								},
+								{
+									"key": "desc",
+									"value": "{{desc}}",
+									"description": "The new description for the card",
+									"disabled": true
+								},
+								{
+									"key": "closed",
+									"value": "{{closed}}",
+									"description": "Whether the card should be archived (closed: true)",
+									"disabled": true
+								},
+								{
+									"key": "idMembers",
+									"value": "{{idMembers}}",
+									"description": "Comma-separated list of member IDs",
+									"disabled": true
+								},
+								{
+									"key": "idAttachmentCover",
+									"value": "{{idAttachmentCover}}",
+									"description": "The ID of the image attachment the card should use as its cover, or null for none",
+									"disabled": true
+								},
+								{
+									"key": "idList",
+									"value": "{{idList}}",
+									"description": "The ID of the list the card should be in",
+									"disabled": true
+								},
+								{
+									"key": "idLabels",
+									"value": "{{idLabels}}",
+									"description": "Comma-separated list of label IDs",
+									"disabled": true
+								},
+								{
+									"key": "idBoard",
+									"value": "{{idBoard}}",
+									"description": "The ID of the board the card should be on",
+									"disabled": true
+								},
+								{
+									"key": "pos",
+									"value": "{{pos}}",
+									"description": "The position of the card in its list. `top`, `bottom`, or a positive float",
+									"disabled": true
+								},
+								{
+									"key": "due",
+									"value": "{{due}}",
+									"description": "When the card is due, or `null`",
+									"disabled": true
+								},
+								{
+									"key": "start",
+									"value": "{{start}}",
+									"description": "The start date of a card, or `null`",
+									"disabled": true
+								},
+								{
+									"key": "dueComplete",
+									"value": "{{dueComplete}}",
+									"description": "Whether the due date should be marked complete",
+									"disabled": true
+								},
+								{
+									"key": "subscribed",
+									"value": "{{subscribed}}",
+									"description": "Whether the member is should be subscribed to the card",
+									"disabled": true
+								},
+								{
+									"key": "address",
+									"value": "{{address}}",
+									"description": "For use with/by the Map View",
+									"disabled": true
+								},
+								{
+									"key": "locationName",
+									"value": "{{locationName}}",
+									"description": "For use with/by the Map View",
+									"disabled": true
+								},
+								{
+									"key": "coordinates",
+									"value": "{{coordinates}}",
+									"description": "For use with/by the Map View. Should be latitude,longitude",
+									"disabled": true
+								},
+								{
+									"key": "cover",
+									"value": "{{cover}}",
+									"description": "Updates the card's cover\n | Option | Values | About |\n |--------|--------|-------|\n | color | `pink`, `yellow`, `lime`, `blue`, `black`, `orange`, `red`, `purple`, `sky`, `green` | Makes the cover a solid color . |\n | brightness | `dark`, `light` | Determines whether the text on the cover should be dark or light.\n | url | An unsplash URL: https://images.unsplash.com | Used if making an image the cover. Only Unsplash URLs work.\n | idAttachment | ID of an attachment on the card | Used if setting an attached image as the cover. |\n | size | `normal`, `full` | Determines whether to show the card name on the cover, or below it. |\n \n `brightness` can be sent alongside any of the other parameters, but all of the other parameters are mutually exclusive; you can not have the cover be a `color` and an `idAttachment` at the same time. \n \n On the brightness options, setting it to light will make the text on the card cover dark:\n ![](/cloud/trello/images/rest/cards/cover-brightness-dark.png)\n \n And vice versa, setting it to dark will make the text on the card cover light: \n ![](/cloud/trello/images/rest/cards/cover-brightness-light.png) ",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Update a card"
+					},
+					"response": []
+				},
+				{
+					"name": "Get a Card",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token={{myToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}cards/{{idCard}}?fields=name",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}cards",
+								"{{idCard}}"
+							],
+							"query": [
+								{
+									"key": "fields",
+									"value": "name",
+									"description": "`all` or a comma-separated list of [fields](/cloud/trello/guides/rest-api/object-definitions/). **Defaults**: `badges, checkItemStates, closed, dateLastActivity, desc, descData, due, start, email, idBoard, idChecklists, idLabels, idList, idMembers, idShort, idAttachmentCover, manualCoverAttachment, labels, name, pos, shortUrl, url`"
+								},
+								{
+									"key": "actions",
+									"value": "{{actions}}",
+									"description": "See the [Actions Nested Resource](/cloud/trello/guides/rest-api/nested-resources/#actions-nested-resource)",
+									"disabled": true
+								},
+								{
+									"key": "attachments",
+									"value": "{{attachments}}",
+									"description": "`true`, `false`, or `cover`",
+									"disabled": true
+								},
+								{
+									"key": "attachment_fields",
+									"value": "{{attachment_fields}}",
+									"description": "`all` or a comma-separated list of attachment [fields](/cloud/trello/guides/rest-api/object-definitions/)",
+									"disabled": true
+								},
+								{
+									"key": "members",
+									"value": "{{members}}",
+									"description": "Whether to return member objects for members on the card",
+									"disabled": true
+								},
+								{
+									"key": "member_fields",
+									"value": "{{member_fields}}",
+									"description": "`all` or a comma-separated list of member [fields](/cloud/trello/guides/rest-api/object-definitions/). **Defaults**: `avatarHash, fullName, initials, username`",
+									"disabled": true
+								},
+								{
+									"key": "membersVoted",
+									"value": "{{membersVoted}}",
+									"description": "Whether to return member objects for members who voted on the card",
+									"disabled": true
+								},
+								{
+									"key": "memberVoted_fields",
+									"value": "{{memberVoted_fields}}",
+									"description": "`all` or a comma-separated list of member [fields](/cloud/trello/guides/rest-api/object-definitions/). **Defaults**: `avatarHash, fullName, initials, username`",
+									"disabled": true
+								},
+								{
+									"key": "checkItemStates",
+									"value": "{{checkItemStates}}",
+									"disabled": true
+								},
+								{
+									"key": "checklists",
+									"value": "{{checklists}}",
+									"description": "Whether to return the checklists on the card. `all` or `none`",
+									"disabled": true
+								},
+								{
+									"key": "checklist_fields",
+									"value": "{{checklist_fields}}",
+									"description": "`all` or a comma-separated list of `idBoard,idCard,name,pos`",
+									"disabled": true
+								},
+								{
+									"key": "board",
+									"value": "{{board}}",
+									"description": "Whether to return the board object the card is on",
+									"disabled": true
+								},
+								{
+									"key": "board_fields",
+									"value": "{{board_fields}}",
+									"description": "`all` or a comma-separated list of board [fields](/cloud/trello/guides/rest-api/object-definitions/#board-object). **Defaults**: `name, desc, descData, closed, idOrganization, pinned, url, prefs`",
+									"disabled": true
+								},
+								{
+									"key": "list",
+									"value": "{{list}}",
+									"description": "See the [Lists Nested Resource](/cloud/trello/guides/rest-api/nested-resources/)",
+									"disabled": true
+								},
+								{
+									"key": "pluginData",
+									"value": "{{pluginData}}",
+									"description": "Whether to include pluginData on the card with the response",
+									"disabled": true
+								},
+								{
+									"key": "stickers",
+									"value": "{{stickers}}",
+									"description": "Whether to include sticker models with the response",
+									"disabled": true
+								},
+								{
+									"key": "sticker_fields",
+									"value": "{{sticker_fields}}",
+									"description": "`all` or a comma-separated list of sticker [fields](/cloud/trello/guides/rest-api/object-definitions/)",
+									"disabled": true
+								},
+								{
+									"key": "customFieldItems",
+									"value": "{{customFieldItems}}",
+									"description": "Whether to include the customFieldItems",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Get a card by its ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Add a new comment to a Card",
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json"
+							},
+							{
+								"key": "Cookie",
+								"value": "token={{myToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}cards/{{idCard}}/actions/comments?text={{$randomColor}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}cards",
+								"{{idCard}}",
+								"actions",
+								"comments"
+							],
+							"query": [
+								{
+									"key": "text",
+									"value": "{{$randomColor}}",
+									"description": "The comment"
+								}
+							]
+						},
+						"description": "Add a new comment to a card"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete a Card",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Response time is less than 200ms\", function () {\r",
+									"    pm.expect(pm.response.responseTime).to.be.below(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"auth": {
+							"type": "noauth"
+						},
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Cookie",
+								"value": "token={{myToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{protocol}}://{{host}}/{{basePath}}cards/{{idCard}}",
+							"protocol": "{{protocol}}",
+							"host": [
+								"{{host}}"
+							],
+							"path": [
+								"{{basePath}}cards",
+								"{{idCard}}"
+							]
+						},
+						"description": "Delete a Card"
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "protocol",
+			"value": "https",
+			"type": "string"
+		},
+		{
+			"key": "host",
+			"value": "api.trello.com",
+			"type": "string"
+		},
+		{
+			"key": "basePath",
+			"value": "1/",
+			"type": "string"
+		},
+		{
+			"key": "myToken",
+			"value": "64b0fe2a721b589d31ea0b8c%2FATTSqccnWh6nVLaXsnew8yCciPSrKRTcxNsAH1rG1SehEP5uEsJhf8YpTbNO2WFzynOy4684B38A",
+			"type": "string"
+		},
+		{
+			"key": "justId",
+			"value": "64b3ed1d3071a97cf4beca83"
+		},
+		{
+			"key": "idList",
+			"value": "64b3ed2ccb934b3a87ca4498"
+		},
+		{
+			"key": "idCard",
+			"value": "64b3ed3d9db7f6954b8b2a2e"
+		}
+	]
+}

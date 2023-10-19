@@ -1,0 +1,46 @@
+<soap:Envelope xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:soap="http://schemas.xmlsoap.org/soap/envelope/">
+   <soap:Body>
+      <CheckTextsResponse xmlns="http://speller.yandex.net/services/spellservice">
+         <ArrayOfSpellResult>
+            <SpellResult>
+               <error code="1" pos="0" row="0" col="0" len="2">
+                  <word>шо</word>
+               </error>
+            </SpellResult>
+            <SpellResult>
+               <error code="1" pos="0" row="0" col="0" len="3">
+                  <word>што</word>
+                  <s>что</s>
+                  <s>то</s>
+               </error>
+               <error code="1" pos="4" row="0" col="4" len="7">
+                  <word>делаешъ</word>
+                  <s>делаешь</s>
+               </error>
+            </SpellResult>
+            <SpellResult>
+               <error code="1" pos="0" row="0" col="0" len="2">
+                  <word>ти</word>
+                  <s>ты</s>
+               </error>
+            </SpellResult>
+            <SpellResult>
+               <error code="1" pos="0" row="0" col="0" len="6">
+                  <word>кешать</word>
+                  <s>кушать</s>
+               </error>
+               <error code="1" pos="7" row="0" col="7" len="6">
+                  <word>будашь</word>
+                  <s>будешь</s>
+               </error>
+            </SpellResult>
+            <SpellResult>
+               <error code="3" pos="0" row="0" col="0" len="3">
+                  <word>лол</word>
+                  <s>Лол</s>
+               </error>
+            </SpellResult>
+         </ArrayOfSpellResult>
+      </CheckTextsResponse>
+   </soap:Body>
+</soap:Envelope>
