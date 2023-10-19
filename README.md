@@ -96,7 +96,7 @@
         
 <br>
 
-<a href="https://prod-files-secure.s3.us-west-2.amazonaws.com/3e513ab4-b41f-4d77-a7c7-3bead948464c/b1312845-6ac4-4904-a0ec-fd102dcbb154/16_13_22_3864b3ef1eecd804.00953684trello.postman_collection.json">
+<a href="https://drive.google.com/file/d/1pLmGcsWiJkLBeUiMuZzXpkYObWbfFyYC/view?usp=sharing">
         Коллекция JSON для Postman</a>
         
 <br>
